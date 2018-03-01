@@ -1,37 +1,52 @@
 -- Title: MovingImages
--- Name: Ms Raffin
+-- Name: Johnathan M
 -- Course: ICS2O/3C
 -- This program displays an image that move across the screen.
 
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
--- global variables
-scrollSpeed = 3
+--global variable
+scrollSpeed = 5
 
--- background image with width and height
-local backgroundImage = display.newImageRect("Images/background.png", 2048, 1536)
+--background image
+local backgroundImage = display.newImageRect("background.jpg", 1960, 1960)
 
--- character image with width and height
-local beetleship = display.newImageRect("Images/beetleship.png", 200, 200)
+	--centers the background image
+	backgroundImage.x = display.contentWidth/2
+	backgroundImage.y = display.contentWidth/2
 
--- set the image to be transparent
-beetleship.alpha = 0
+local rocket = display.newImageRect("beetleship.png", 450, 540)
 
--- set the initial x and y position of beetleship
-beetleship.x = 0
-beetleship.y = display.contentHeight/3
+	--sets image1 position
+	rocket.x = 0
+	rocket.y = 700
 
--- Function: MoveShip
--- Input: this function accepts an event listener
--- Output: none
--- Description: This function adds the scroll speed to the x-value of the ship
+
 local function MoveShip(event)
-	-- add the scroll speed to the x-value of the ship
-	beetleship.x = beetleship.x + scrollSpeed
-	-- change the transparency of the ship every time it moves so that it fades out
-	beetleship.alpha = beetleship.alpha + 0.01
+	-- links the scroll speed to the x value of rocket
+	rocket.x = rocket.x + scrollSpeed
+
+	print ("***rocket.x = " .. rocket.x)
+
+	--flips rocket when it gets off screen
+	if (rocket.x > 1200) then
+
+		rocket.xScale = -1 
+
+		--moves rocket back across screen once its off screen
+		scrollSpeed = -5 
+	end
+
+	if (rocket.x < -200) then
+
+		rocket.xScale = 1
+
+		scrollSpeed = 5
+	end
+
 end
 
--- MoveShip will be called at program start over and over (30 frames or times per second)
+-- MoveShip will be called
 Runtime:addEventListener("enterFrame", MoveShip)
+
