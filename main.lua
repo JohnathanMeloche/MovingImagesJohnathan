@@ -9,6 +9,10 @@ display.setStatusBar(display.HiddenStatusBar)
 --global variable
 scrollSpeed = 5
 
+scrollSpeed2 = 12
+
+scrollSpeed3 = 7
+
 --background image
 local backgroundImage = display.newImageRect("background.jpg", 1960, 1960)
 
@@ -27,7 +31,6 @@ local function MoveShip(event)
 	-- links the scroll speed to the x value of rocket
 	rocket.x = rocket.x + scrollSpeed
 
-	print ("***rocket.x = " .. rocket.x)
 
 	--flips rocket when it gets off screen
 	if (rocket.x > 1200) then
@@ -50,3 +53,67 @@ end
 -- MoveShip will be called
 Runtime:addEventListener("enterFrame", MoveShip)
 
+
+local shark = display.newImageRect("shark.gif", 450, 540)
+
+	--sets shark position
+	shark.x = 0
+	shark.y = 1000
+
+
+local function MoveShip(event)
+	-- links the scroll speed to the x value of shark
+	shark.x = shark.x + scrollSpeed2
+
+
+	--flips shark when it gets off screen
+	if (shark.x > 1200) then
+
+		shark.xScale = -1 
+
+		--moves shark back across screen once its off screen
+		scrollSpeed2 = -12 
+	end
+
+	if (shark.x < -200) then
+
+		shark.xScale = 1
+
+		scrollSpeed2 = 12
+	end
+
+end
+
+-- MoveShip will be called
+Runtime:addEventListener("enterFrame", MoveShip)
+
+local crest = display.newImageRect ("crest.png", 420, 550)
+	--sets crest position
+	crest.x = 600
+	crest.y = 100
+	
+
+
+local function MoveShip(event)
+	-- links the scroll speed to the x value of crest
+	crest.y = crest.y + scrollSpeed3
+
+
+	--flips crest when it gets off screen
+	if (crest.y > 1200) then
+
+
+		--moves crest back across screen once its off screen
+		scrollSpeed3 = -7
+	end
+
+	if (crest.y < 250) then
+
+
+		scrollSpeed3 = 7
+	end
+
+end
+
+-- MoveShip will be called
+Runtime:addEventListener("enterFrame", MoveShip)
