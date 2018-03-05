@@ -61,7 +61,7 @@ local shark = display.newImageRect("shark.gif", 450, 540)
 	shark.y = 1000
 
 
-local function MoveShip(event)
+local function MoveShark(event)
 	-- links the scroll speed to the x value of shark
 	shark.x = shark.x + scrollSpeed2
 
@@ -84,8 +84,8 @@ local function MoveShip(event)
 
 end
 
--- MoveShip will be called
-Runtime:addEventListener("enterFrame", MoveShip)
+-- MoveShark will be called
+Runtime:addEventListener("enterFrame", MoveShark)
 
 local crest = display.newImageRect ("crest.png", 420, 550)
 	--sets crest position
@@ -94,7 +94,7 @@ local crest = display.newImageRect ("crest.png", 420, 550)
 	
 
 
-local function MoveShip(event)
+local function MoveCrest(event)
 	-- links the scroll speed to the x value of crest
 	crest.y = crest.y + scrollSpeed3
 
@@ -116,4 +116,4 @@ local function MoveShip(event)
 end
 
 -- MoveShip will be called
-Runtime:addEventListener("enterFrame", MoveShip)
+Runtime:addEventListener("enterFrame", MoveCrest)
