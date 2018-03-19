@@ -6,6 +6,10 @@
 -- hide the status bar
 display.setStatusBar(display.HiddenStatusBar)
 
+
+local Ting = audio.loadSound("sounds/ting.mp3")
+local playTing
+
 --global variable
 scrollSpeed = 5
 
@@ -37,11 +41,15 @@ local function MoveShip(event)
 
 		rocket.xScale = -1 
 
+		playTing = audio.play(Ting)
+
 		--moves rocket back across screen once its off screen
 		scrollSpeed = -5 
 	end
 
 	if (rocket.x < -200) then
+
+		playTing = audio.play(Ting)
 
 		rocket.xScale = 1
 
@@ -69,6 +77,8 @@ local function MoveShark(event)
 	--flips shark when it gets off screen
 	if (shark.x > 1200) then
 
+		playTing = audio.play(Ting)
+
 		shark.xScale = -1 
 
 		--moves shark back across screen once its off screen
@@ -76,6 +86,8 @@ local function MoveShark(event)
 	end
 
 	if (shark.x < -200) then
+
+		playTing = audio.play(Ting)
 
 		shark.xScale = 1
 
@@ -102,12 +114,16 @@ local function MoveCrest(event)
 	--flips crest when it gets off screen
 	if (crest.y > 1200) then
 
+		playTing = audio.play(Ting)
+
 
 		--moves crest back across screen once its off screen
 		scrollSpeed3 = -7
 	end
 
 	if (crest.y < 250) then
+
+		playTing = audio.play(Ting)
 
 
 		scrollSpeed3 = 7
@@ -117,3 +133,7 @@ end
 
 -- MoveShip will be called
 Runtime:addEventListener("enterFrame", MoveCrest)
+
+local backgroundMusic = audio.loadSound ("Sounds/Party.mp3")
+
+--audio.play (backgroundMusic)
