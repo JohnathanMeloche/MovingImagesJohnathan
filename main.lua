@@ -7,7 +7,7 @@
 display.setStatusBar(display.HiddenStatusBar)
 
 
-local Ting = audio.loadSound("sounds/ting.mp3")
+local Ting = audio.loadSound("Sounds/ding.mp3")
 local playTing
 
 --global variable
@@ -133,7 +133,3 @@ end
 
 -- MoveShip will be called
 Runtime:addEventListener("enterFrame", MoveCrest)
-
-local backgroundMusic = audio.loadSound ("Sounds/Party.mp3")
-
---audio.play (backgroundMusic)
